@@ -16,7 +16,7 @@ pancaker <- function(eaters = 1){
     mutate(volume = volume * eaters) 
 }
 
-pancaker(7)
+pancaker(12)
 
 
 tortillar <- function(eaters = 1){
@@ -34,3 +34,26 @@ tortillar <- function(eaters = 1){
 }
 
 tortillar(4)
+
+
+cookier <- function(eaters = 1){
+  df_recipe <- jsonlite::fromJSON(
+'[{"ingredient":"flour", "volume":1.5, "unit":"cups"}, 
+  {"ingredient":"kosher salt", "volume":0.5, "unit":"tsp"},
+  {"ingredient":"baking power", "volume":0.75, "unit":"tsp"},
+  
+  {"ingredient":"butter", "volume":0.5, "unit":"cups"},
+  {"ingredient":"brown sugar", "volume":0.5, "unit":"cups"},
+  {"ingredient":"sugar", "volume":0.5, "unit":"cups"},
+  
+  {"ingredient":"vanilla", "volume":0.5, "unit":"tsp"},
+  {"ingredient":"large egg", "volume":1, "unit":"egg"},
+  {"ingredient":"peanut butter", "volume":0.5, "unit":"cups"}
+  ]'
+  ) %>% as_tibble()
+  
+  df_recipe %>% 
+    mutate(volume = volume * eaters) 
+}
+
+cookier(8)
